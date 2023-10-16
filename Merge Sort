@@ -1,0 +1,31 @@
+def mergeSort(array):
+    if len(array) > 1:
+        L = len(array)//2
+        lift_array = array[:L]
+        right_array = array[L:]
+        
+        mergeSort(lift_array)
+        mergeSort(right_array)
+        i = j = k = 0
+        while i < len(lift_array) and j < len(right_array):
+            if lift_array[i] < right_array[j]:
+                array[k] = lift_array[i]
+                i += 1
+            else:
+                array[k] = right_array[j]
+                j += 1
+            k += 1
+        while i < len(lift_array):
+            array[k] = lift_array[i]
+            i += 1
+            k += 1
+        while j < len(right_array):
+            array[k] = right_array[j]
+            j += 1
+            k += 1
+
+#Example
+array_t = [38,27,43,10]
+print("giving array:",array_t)
+mergeSort(array_t)
+print("Sorted array is: ",array_t)
